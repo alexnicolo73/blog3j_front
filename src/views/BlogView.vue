@@ -1,6 +1,8 @@
 <template>
     <div class="main">
-        <PostCard v-for="blog_post in info" :key="blog_post.id" :name="blog_post.name" :content="blog_post.content" :image="blog_post.image"></PostCard>
+
+        <PostCard v-for="blog_post in info" :key="blog_post.id" :name="blog_post.title" :content="blog_post.contenu" :image="blog_post.img"></PostCard>
+
     </div>
 </template>
 
@@ -11,6 +13,9 @@ import axios from 'axios';
 export default {
     name: 'Blog_Post_List',
 
+    components : {
+        PostCard
+        },
     data () {
         return {
         info: null
@@ -18,8 +23,14 @@ export default {
     },
     mounted () {
         axios
-        .get('')
-        .then(response => (this.info = response.data))
+        .get('http://127.0.0.1:8000/api/getblogarticle')
+        .then(response =>{ 
+            this.info = response.data.blog_post;
+            console.log(this.info[0].img)
+           
+            })
+
+
     }
 } 
 </script>

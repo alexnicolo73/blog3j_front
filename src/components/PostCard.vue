@@ -12,7 +12,7 @@
             {{content}}
         </p>
         <a href="#">
-            <img class="post_image" src="{{image}}" alt="">
+            <img class="post_image" :src="image" alt="">
         </a>
         </div>
 </template>
@@ -20,10 +20,13 @@
 <script>
 
 export default {
-  name: 'Blog_Post',
-  props: [
-    "name", "content", "image"
-  ]
+  name: 'PostCard',
+    props: {
+    name: String,
+    content: String,
+    image: String
+  }
+
 }
 
 </script>
