@@ -3,9 +3,9 @@
         <PostCard v-for="blog_post in info" 
             :key="blog_post.id" 
             :name="blog_post.title" 
-            :content="blog_post.content" 
-            :date="blog_post.publishedAt" 
-            :image="blog_post.urlToImage">
+            :content="blog_post.contenu" 
+            :date="blog_post.created_at" 
+            :image="blog_post.img">
         </PostCard>
     </div>
 </template>
@@ -27,10 +27,9 @@ export default {
     },
     mounted () {
         axios
-        .get('https://newsapi.org/v2/everything?q=Apple&from=2022-05-05&sortBy=popularity&apiKey=326fa9ca5fb84f74b095c0b8de423cf5')
+        .get('https://site3j2.herokuapp.com/api/getblogarticle')
         .then(response =>{ 
-            this.info = response.data.articles;
-            console.log(this.info)
+            this.info = response.data.blog_post;
         })
     }
 } 
