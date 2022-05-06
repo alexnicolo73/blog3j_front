@@ -27,9 +27,10 @@ export default {
     },
     mounted () {
         axios
-        .get('https://site3j2.herokuapp.com/api/getblogarticle')
+        .get('https://site3j2.herokuapp.com/api/getarticle/' + this.$route.params.id)
         .then(response =>{ 
             this.info = response.data.blog_post;
+            console.log(this.info);
         })
     }
 } 
