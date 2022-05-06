@@ -1,8 +1,12 @@
 <template>
     <div class="main">
-
-        <PostCard v-for="blog_post in info" :key="blog_post.id" :name="blog_post.title" :content="blog_post.contenu" :image="blog_post.img"></PostCard>
-
+        <PostCard v-for="blog_post in info" 
+            :key="blog_post.id" 
+            :name="blog_post.title" 
+            :content="blog_post.content" 
+            :date="blog_post.publishedAt" 
+            :image="blog_post.urlToImage">
+        </PostCard>
     </div>
 </template>
 
@@ -23,14 +27,11 @@ export default {
     },
     mounted () {
         axios
-        .get('http://127.0.0.1:8000/api/getblogarticle')
+        .get('https://newsapi.org/v2/everything?q=Apple&from=2022-05-05&sortBy=popularity&apiKey=326fa9ca5fb84f74b095c0b8de423cf5')
         .then(response =>{ 
-            this.info = response.data.blog_post;
-            console.log(this.info[0].img)
-           
-            })
-
-
+            this.info = response.data.articles;
+            console.log(this.info)
+        })
     }
 } 
 </script>
@@ -38,8 +39,10 @@ export default {
 <style>
 
 .main {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    align-items: normal;
 }
 
 </style>

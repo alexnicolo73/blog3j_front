@@ -1,7 +1,7 @@
 <template>
     <div id="blog_post_card">
         <h2 class="category_title">
-            Lorem ipsum dolor
+            {{date}}
         </h2>
         <h1 class="post_title">
             <a href="#">
@@ -20,15 +20,14 @@
 <script>
 
 export default {
-  name: 'PostCard',
+    name: 'PostCard',
     props: {
     name: String,
     content: String,
-    image: String
+    image: String,
+    date: String
   }
-
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -37,8 +36,8 @@ export default {
 
     #blog_post_card {
         box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.62);
-        width: 30vw;
-        height: auto;
+        //width: 30vw;
+        //height: auto;
         padding: 2rem;
         border-radius: 0 0 1.5% 1.5%;
         border-top: 1.5px solid #E4EE89;
@@ -73,8 +72,10 @@ export default {
             -webkit-box-orient: vertical;
         }
         .post_image {
-            width: 300px;
-            height: 100px;
+            // width: 300px;
+            // height: 100px;
+            object-fit: cover;
+            max-width: 100%;
         }
     }
 
